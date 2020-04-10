@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- explicit form view definition -->
+    <record model="ir.ui.view" id="resolved_queries_data_wizard_form">
+      <field name="name">resolved queries wizard form</field>
+      <field name="model">resolved.queries.data.wizard</field>
+      <field name="arch" type="xml">
+        <form>
+              <div attrs="{'invisible': [('log_level', '=', 'debug_sql')]}" >
+              To test the modules of <b>ir ui view cache, web base cache or website base cache</b>, you must change the log_leve parameter in the configuration file to debug_sql<br/>
+              <a href="https://apps.odoo.com/apps/modules/browse?search=juventud+productiva" target="_blank">Download Odoo app modules</a><br/>
+              <a  href="https://apps.odoo.com/apps/modules/browse?search=juventud+productiva" target="_blank">Youtube ir ui view cache</a><br/>
+              <a href="https://www.youtube.com/channel/UCTj66IUz5M-QV15Mtbx_7yg" target="_blank">Youtube JPV</a>
+            </div>
+            <group>
+                <field name="log_level"/>
+            </group>
+<!--
+            Módulos Recomendados
+-->
+            <h3 align="center" >Recommended Modules</h3>
+
+            <!--recommended modules images-->
+              <div style="width:34mm; height:34mm;">
+              <img src='/resolved_queries/static/description/view_record_cache.png' alt="Smiley face" class="oe_left" style="width:34mm; height:34mm;"/>
+              </div><br/>
+<!--
+            Data para el modulo ir ui view cache.
+-->
+                <button name="data_ir_ui_cache"
+                        string="Data for the module Ir ui view cache."
+                        class="oe_highlight"
+                        align="center"
+                        type="object"/>
+                <br/>
+                <hr/>
+                <br/>
+
+              <!--recommended modules images-->
+              <div style="width:34mm; height:34mm;">
+              <img src='/resolved_queries/static/description/performance web.png' alt="Smiley face" class="oe_left" style="width:34mm; height:34mm;"/>
+              </div><br/>
+<!--
+                Data para el módulo web base cache.
+-->
+                <button name="data_web_base_cache"
+                        string="Data for the cache web base module."
+                        class="oe_highlight "
+                        type="object"/>
+                <br/>
+                <hr/>
+                <br/>
+
+
+                <!--recommended modules images-->
+                <div style="width:34mm; height:34mm;">
+                <img src='/resolved_queries/static/description/performance website.png' alt="Smiley face" class="oe_left" style="width:34mm; height:34mm;"/>
+                </div><br/>
+<!--
+                Data para el módulo website base cache.
+-->
+                <button name="data_website_base_cache"
+                        string="Data for the website base cache module."
+                        class="oe_highlight "
+                        type="object"/>
+            <hr/>
+             <div attrs="{'invisible': [('log_level', '!=', 'debug_sql')]}" >
+              <a href="https://apps.odoo.com/apps/modules/browse?search=juventud+productiva" target="_blank">Download Odoo app modules</a>
+              <a  href="https://apps.odoo.com/apps/modules/browse?search=juventud+productiva" target="_blank">Youtube ir ui view cache</a>
+              <a href="https://www.youtube.com/channel/UCTj66IUz5M-QV15Mtbx_7yg" target="_blank">Youtube JPV</a>
+            </div>
+            <footer>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+        </footer>
+        </form>
+      </field>
+    </record>
+    <record id="resolved_queries_wizard_data_action" model="ir.actions.act_window">
+            <field name="name">Load data from recommended modules</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">resolved.queries.data.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    <menuitem
+            name="Load data from recommended modules"
+            id="resolved_queries_data_menu"
+            action="resolved_queries_wizard_data_action"
+            parent="resolved_queries_menu_root"
+            />
+</odoo>

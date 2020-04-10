@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<odoo>
+  <record id="resolved_queries_category_group" model="ir.module.category">
+    <field name="name">Resolve Queries</field>
+    <field name="category_id" ref="base.module_category_hidden"/>
+  </record>
+
+  <record id="group_resolved_queries_user" model="res.groups">
+    <field name="name">User</field>
+    <field name="category_id"
+           ref="resolved_queries_category_group"/>
+  </record>
+
+</odoo>

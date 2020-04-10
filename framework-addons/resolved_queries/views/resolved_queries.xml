@@ -1,0 +1,116 @@
+<odoo>
+  <data>
+    <act_window id="data_resolved_queries_wizard_action"
+            name="Data Resolved Queries"
+            src_model="resolved.queries"
+            res_model="resolved.queries.data.wizard"
+            view_type="form" view_mode="form"
+            groups='group_resolved_queries_user,base.group_system'
+            key2="client_action_multi" target="new"
+            />
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="resolved_queries_list">
+      <field name="name">resolved queries tree</field>
+      <field name="model">resolved.queries</field>
+      <field name="arch" type="xml">
+        <tree >
+          <field name="model_id"/>
+          <field name="prefix"/>
+          <field name="total"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record model="ir.ui.view" id="resolved_queries_form">
+      <field name="name">resolved queries form</field>
+      <field name="model">resolved.queries</field>
+      <field name="arch" type="xml">
+        <form>
+            <header>
+<!--
+                 Ejecutar grep en el log
+-->
+                 <button name="run_resolved_queries"
+                        string="Run log search" type="object"/>
+<!--
+                Limpiar log
+-->
+                 <button name="clear_log"
+                        string="Clear log file" type="object"/>
+          </header>
+          <sheet>
+            <div  attrs="{'invisible': [('log_level', '=', 'debug_sql')]}" >
+              To test the modules of <b>ir ui view cache, web base cache or website base cache</b>, you must change the log_leve parameter in the configuration file to debug_sql
+              <p><a href="https://apps.odoo.com/apps/modules/browse?search=juventud+productiva" target="_blank">Download Odoo app modules</a></p>
+            </div>
+            <group>
+                <field name="log_level"/>
+                <field name="model_id"/>
+                <field name="name"/>
+                <field name="table"/>
+                <field name="total_row"/>
+                <field name="prefix"/>
+                <field name="total"/>
+                <field name="search_parameter"/>
+                <field name="query_file" wedget="binary" filename="store_fname"/>
+                <field name="store_fname" invisible="1"/>
+
+            </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_resolved_queries_graph">
+            <field name="name">resolved.queries.graph</field>
+            <field name="model">resolved.queries</field>
+            <field name="arch" type="xml">
+                <graph string="Resolved Queries">
+                    <field name="model_id"/>
+                    <field name="total" type="measure"/>
+                </graph>
+            </field>
+        </record>
+     <record model="ir.ui.view" id="view_resolved_queries_pivot">
+            <field name="name">resolved.queries.pivot</field>
+            <field name="model">resolved.queries</field>
+            <field name="arch" type="xml">
+                <pivot string="Resolved Queries">
+                    <field name="model_id" type="row"/>
+                    <field name="total" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="resolved_queries_action_window">
+      <field name="name">Resolved Queries</field>
+      <field name="res_model">resolved.queries</field>
+      <field name="view_mode">tree,form,pivot,graph</field>
+       <field name="domain">[]</field>
+    </record>
+
+
+    <!-- menu categories -->
+    <menuitem name="Resolved Queries" id="resolved_queries_menu_root" groups='group_resolved_queries_user,base.group_system'/>
+    <menuitem
+            name="Queries"
+            id="resolved_queries_menu"
+            action="resolved_queries_action_window"
+            parent="resolved_queries_menu_root"
+            />
+
+
+    <act_window id="resolved_queries_wizard_action"
+            name="Run Resolved Queries"
+            src_model="resolved.queries"
+            res_model="resolved.queries.wizard"
+            view_type="form" view_mode="form"
+            groups='group_resolved_queries_user,base.group_system'
+            key2="client_action_multi" target="new"
+            />
+  </data>
+</odoo>

@@ -1,0 +1,34 @@
+<odoo>
+  <data>
+    <!-- explicit form view definition -->
+    <record model="ir.ui.view" id="resolved_queries_wizard_form">
+      <field name="name">resolved queries wizard form</field>
+      <field name="model">resolved.queries.wizard</field>
+      <field name="arch" type="xml">
+        <form>
+            <header>
+<!--
+                 Ejecutar grep en el log
+-->
+                 <button name="run_resolved_queries"
+                        string="Run the regular expression in le log"
+                        type="object"/>
+<!--
+                Limpiar log
+-->
+                 <button name="clear_log"
+                        string="Clear log file" type="object"/>
+          </header>
+          <sheet>
+              <field name="resolved_queries_ids"/>
+            <group>
+                <field name="total"/>
+                <field name="query_file"/>
+                <field name="store_fname"/>
+            </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+  </data>
+</odoo>
